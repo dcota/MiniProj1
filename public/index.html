@@ -6,32 +6,222 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://unpkg.com/vue@3"></script>
         <script src="https://unpkg.com/vue-router@4"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Document</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family:'Courier New', Courier, monospace;
+                font-size: 20px;
+                background-color: #b2bfd1;
+            }
+
+            .container {
+                width: 60%;
+                margin-left:auto;
+                margin-right: auto;
+                height:auto;
+            }
+
+            header {
+                background-color: #141b25!important;
+            }
+
+            /*+++++++++++nav bar+++++++++++++++++++*/
+            .main-nav {
+                height: 90px;
+                border-bottom: white;
+                border-width: 2px;
+            }
+            .logo {
+                color: white;
+                line-height: 90px;
+                font-size: 30px;
+                font-weight: bold;
+                text-decoration: none;
+                margin-left: 30px;
+                font-family: "AstroSpace", sans-serif;
+            }
+            .navlinks {
+                font-family: "AstroSpace", sans-serif;
+                list-style: none;
+                float: right;
+                line-height: 90px;
+                margin: 0;
+                padding: 0;
+            }
+            .navlinks li {
+                display: inline-block;
+                margin: 0 20px;
+            }
+            .navlinks li a {
+                color: white;
+                text-decoration: none;
+                font-size: 18px;
+                text-transform: uppercase;
+                transition: all 0.3s linear 0s;
+            }
+            .navlinks li a:hover {
+                color: #7ebcb9;
+                padding-bottom: 7px;
+                border-bottom: 2px solid #7ebcb9;
+            }
+            li a.contact {
+                background-color: #00adb5;
+                padding: 9px 20px;
+                border-radius: 50px;
+                transition: all 0.3s linear 0s;
+            }
+            li a.contact:hover {
+                background-color: #047e85;
+                color: white;
+                border-bottom: none;
+            }
+            .menu-btn {
+                color: white;
+                font-size: 25px;
+                float: right;
+                line-height: 90px;
+                margin-right: 40px;
+                cursor: pointer;
+                display: none;
+            }
+            #isChecked {
+                display: none;
+            }
+            @media (max-width: 800px) {
+                .navlinks {
+                    position: fixed;
+                    width: 100%;
+                    height: 100vh;
+                    text-align: center;
+                    background: #222831;
+                    right: -100%;
+                    transition: all 0.5s;
+                }
+                .navlinks li {
+                    display: block;
+                }
+                .navlinks li a {
+                    font-size: 20px;
+                }
+                .navlinks li a:hover {
+                    border-bottom: none;
+                }
+                .menu-btn {
+                    display: block;
+                }
+                #isChecked:checked ~ .navlinks {
+                    right: 0;
+                }
+            }
+            @media (max-width: 350px) {
+                .logo {
+                    margin-left: 15px;
+                    font-size: 25px;
+                }
+                .menu-btn {
+                    margin-right: 15px;
+                    font-size: 25px;
+                }
+            }
+            /*+++++++footer++++++++++*/
+            .footer a {
+                color: white;
+            }
+
+            .footer a:hover {
+                opacity: .5;
+            }
+
+            .footer {
+                position:fixed;
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: .5em;
+                bottom:0px;
+                background-color: #141b25;
+            }
+            .footer li {
+                display: inline;
+                padding-right: .5em;
+                font-size:2em;
+            }
+            ul.social-media {
+                padding: 0;
+            }
+
+            @media (min-width: 768px) {
+                .footer {
+                    flex-direction: row;
+                    justify-content: center;
+                }           
+                .footer li {
+                    font-size:2em;
+                }
+            }
+        </style>
     </head>
     <body>
         <div id="app" >
-            <ul class="nav">
-                <li>
-                    <router-link to="/">Quem sou eu?</router-link>
-                </li>
-                <li>
-                    <router-link to="/oquefaco">O que faço?</router-link>
-                </li>
-                <li>
-                    <router-link to="/hobbies">Hobbies</router-link>
-                </li>
-            </ul>
-            <div class="clearfix"></div>
+            <header>
+                <nav class="app">
+                    <input type="checkbox" id="isChecked" />
+                    <label for="isChecked" class="menu-btn">
+                      <i class="fas fa-bars"></i>
+                    </label>
+                    <router-link to="/"class="logo">Duarte Cota</router-link>
+                    <ul class="navlinks">
+                      <li><router-link to="/quemsou">Quem sou eu?</router-link></li>
+                      <li><router-link to="/oquefaco">O que faço?</router-link></li>
+                      <li><router-link to="/hobbies">Hobbies</router-link></li>
+                    </ul>
+                  </nav>
+            </header>
+        
             <div id="content">
                 <router-view></router-view>
             </div>
-        </div>
 
+            <footer>
+                <div class="footer"> 
+                    <ul class="social-media">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook " aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter " aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-envelope " aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+              </footer>    
+        </div>
         <script>              
             //components
-            const quemsou = { 
-                template: `<div>
+            const home = { 
+                template: `<div class="container">
                         <h1>Home</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel exercitationem temporibus quos, eaque officia modi, tempore
+                            ratione nisi eos harum esse omnis repudiandae iusto? In facere mollitia vero voluptatem odit.
+                        </p>
+                    </div>` 
+            }
+            const quemsou = { 
+                template: `<div class="container">
+                        <h1>Quem sou</h1>
                         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel exercitationem temporibus quos, eaque officia modi, tempore
                             ratione nisi eos harum esse omnis repudiandae iusto? In facere mollitia vero voluptatem odit.
                         </p>
@@ -39,47 +229,35 @@
             }
             //contact components
             const oquefaco = { 
-                template: `<div>
-                    <h1>Contact</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel exercitationem temporibus quos, eaque officia modi, tempore
-                        ratione nisi eos harum esse omnis repudiandae iusto? In facere mollitia vero voluptatem odit.
-                    </p>
-                </div>`
+                template: `<div class="container">
+                        <h1>O que faço</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel exercitationem temporibus quos, eaque officia modi, tempore
+                            ratione nisi eos harum esse omnis repudiandae iusto? In facere mollitia vero voluptatem odit.
+                        </p>
+                    </div>`
             }
             //contact components
             const hobbies = { 
-                template: `<div>
-                    <h1>About</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel exercitationem temporibus quos, eaque officia modi, tempore
-                        ratione nisi eos harum esse omnis repudiandae iusto? In facere mollitia vero voluptatem odit.
-                    </p>
-                </div>`
+                template: `<div class="container">
+                        <h1>Hobbies</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel exercitationem temporibus quos, eaque officia modi, tempore
+                            ratione nisi eos harum esse omnis repudiandae iusto? In facere mollitia vero voluptatem odit.
+                        </p>
+                    </div>`
             }    
-
-            //Routes
-            /*const router = new VueRouter({
-                routes:[
-                    { path: '/', component: quemsou },
-                    { path: '/oquefaco', component: oquefaco },
-                    { path: '/hobbies', component: hobbies }
-                ]
-            })*/
             const routes = [
-                    { path: '/', component: quemsou },
+                    { path: '/', component: home },
+                    { path: '/quemsou', component: quemsou },
                     { path: '/oquefaco', component: oquefaco },
                     { path: '/hobbies', component: hobbies }
                 ]
-
-
             const router = VueRouter.createRouter({
                 history: VueRouter.createWebHistory(),
                 routes
             })
-
             const app = Vue.createApp({})
             app.use(router)
             app.mount('#app')
-       
         </script>
     </body>
 </html>

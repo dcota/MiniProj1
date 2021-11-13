@@ -25,13 +25,13 @@ Script: index.html
                 font-size: 20px;
                 background-color: #b2bfd1;
             }
-            h1 {
+            .tit {
                 text-align:center;
                 font-style: oblique;
+                font-size: 60px;
+                font-weight: bold;
             }
-            h2 {
-                text-align:center;
-            }
+
             .container {
                 margin-top:110px;
                 max-width: 60%;
@@ -53,9 +53,11 @@ Script: index.html
             }
             .image{
                 max-width: 100%;
+                height: auto;
                 margin-left: auto;
                 margin-right: auto;
-                height: auto;
+                margin-top: 60px;
+                margin-bottom: 60px;
                 display: block;
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
                 border-radius: 5%;
@@ -313,13 +315,13 @@ Script: index.html
             const home = { 
                 template: `
                 <div class="container">
-                        <h1>Ad astra per áspera</h1>                      
-                        <img class="image" src="https://www.duartecota.com/img/cota.png">
-                        <p style="text-align: center;">
-                            Profissional do ensino, estudante, pai, marido e um apaixonado pela ciência e tecnologia.
-                        </p>
-                        <div class="spacer"></div>
-                    </div>` 
+                    <div class = tit>Ad astra per áspera</div>                      
+                    <img class="image" src="https://www.duartecota.com/img/cota.png">
+                    <p style="text-align: center;">
+                        Profissional do ensino, estudante, pai, marido e um apaixonado pela ciência e tecnologia.
+                    </p>
+                    <div class="spacer"></div>
+                </div>` 
             }
             const quemsou = { 
                 template: 
@@ -605,7 +607,7 @@ Script: index.html
                             <span><i class="fas fa-video"></i></span>&nbsp&nbsp Ver televisão e ir ao cinema
                         </p>
                         <p>
-                            <span><i class="fas fa-book-reader"></i></span>&nbsp&nbsp Ler revistas técnicas
+                            <span><i class="fas fa-book"></i></span>&nbsp&nbsp Ler revistas técnicas
                         </p>
                         <p>
                             <span><i class="fas fa-pizza-slice"></i></span>&nbsp&nbsp Cozinhar ou ir a restaurantes
